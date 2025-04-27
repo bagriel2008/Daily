@@ -1,0 +1,205 @@
+@media (max-width: 1920px) {
+  body {
+    font-family: Arial, sans-serif;
+    background: #fefefe;
+    margin: 0;
+    padding: 20px;
+  }
+
+  body::before,
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 2vw;
+    background-color: #80D9B4;
+  }
+
+  body::before {
+    left: 0;
+  }
+
+  body::after {
+    right: 0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 24px;
+  }
+
+  .title {
+    text-align: center;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 5.5rem;
+    font-family: "Pacifico", cursive;
+    color: #3DBC87;
+    margin-top: 7px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .icon {
+    font-size: 24px;
+  }
+
+  .card-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0;
+    color: #3DBC87;
+    font-family: "Baloo Thambi 2", system-ui
+  }
+
+  .card-subtitle {
+    font-size: 0.875rem;
+    color: #80D9B4;
+    margin: 0;
+    font-family: "Baloo Thambi 2", system-ui;
+    font-weight: 600
+  }
+
+  .card-content p {
+    font-size: 0.875rem;
+    margin-bottom: 8px;
+    color: #A9E8CE;
+    font-family: "Baloo Thambi 2", system-ui;
+    font-weight: 600
+  }
+
+  .voltar {
+    border: none;
+    color: #80D9B4;
+    font-size: 0.95rem;
+    font-family: "Baloo Thambi 2", system-ui;
+    font-weight: 600;
+    margin-left: 25px;
+  }
+}
+
+@media (max-width: 546px) {
+  body {
+    font-family: Arial, sans-serif;
+    background: #fefefe;
+    margin: 0;
+    padding: 20px;
+    position: relative;
+    min-height: 100vh;
+  }
+
+  body::before,
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 2vw;
+    background-color: #80D9B4;
+    z-index: 0;
+  }
+
+  body::before {
+    left: 0;
+  }
+
+  body::after {
+    right: 0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .title {
+    text-align: center;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 3.5rem;
+    font-family: "Pacifico", cursive;
+    color: #3DBC87;
+    margin-top: 7px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .icon {
+    font-size: 24px;
+  }
+
+  .card-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0;
+    color: #3DBC87;
+    font-family: "Baloo Thambi 2", system-ui;
+  }
+
+  .card-subtitle {
+    font-size: 0.875rem;
+    color: #80D9B4;
+    margin: 0;
+    font-family: "Baloo Thambi 2", system-ui;
+    font-weight: 600;
+  }
+
+  .card-content p {
+    font-size: 0.875rem;
+    margin-bottom: 8px;
+    color: #A9E8CE;
+    font-family: "Baloo Thambi 2", system-ui;
+    font-weight: 600;
+  }
+
+  .voltar {
+    border: none;
+    color: #80D9B4;
+    font-size: 0.95rem;
+    font-family: "Baloo Thambi 2", system-ui;
+    font-weight: 600;
+    margin-left: 25px;
+  }
+
+}

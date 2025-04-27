@@ -1,93 +1,288 @@
-*{
+* {
     padding: 0;
     margin: 0;
 }
 
-.title{
+body::before,
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2vw;
+    background-color: #ffc1cc;
+}
+
+body::before {
+    left: 0;
+}
+
+body::after {
+    right: 0;
+}
+
+.title {
     font-family: "Meow Script", cursive;
     font-size: 100px;
     color: #852289;
     display: flex;
-    justify-content: center;    
+    justify-content: center;
 }
 
 
-.opcoesMeses{
+.opcoesMeses {
     border: none;
     background: #f5f5f5;
     border-radius: 8px;
     margin-bottom: 8px;
     color: #852289;
     font-weight: bold;
-    border: none;
     font-size: 35px;
     height: 30px;
-    padding-left:100px;
+    padding-left: 100px;
     width: auto;
     height: auto;
 }
 
 
-.Progressos{
+.Progressos {
     display: flex;
     flex-direction: column;
-    padding-top: 85px;
+    padding-top: 15px;
     padding-left: 310px;
     row-gap: 20px;
     
 }
 
-.Progressos button{
+.Progressos button {
     border: none;
     border-radius: 8px;
     margin-bottom: 8px;
-    color: #BB64BE;
+    color: #E3B5E5;
     font-weight: 900;
     font-size: 20px;
 }
 
-.Progressos button:hover{
-    border-color: #852289;
-    border-radius: 15px;
-    border:solid;
-    width: 140px;
+
+
+/* Estilos personalizados para a barra de rolagem */
+.Progressos::-webkit-scrollbar, .calendario::-webkit-scrollbar {
+    width: 8px;
 }
 
-.calendario{
+.Progressos::-webkit-scrollbar-thumb, .calendario::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+
+.Progressos::-webkit-scrollbar-thumb:hover, .calendario::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+.Progressos button:hover {
+    border-color: #852289;
+    border-radius: 15px;
+    border: solid;
+}
+
+.calendario {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    padding-top: 80px;
+    padding-top: 45px;
     padding-left: 0;
+
+    max-height: 600px; /* Defina a altura máxima para o calendário */
+    overflow-y: auto;  /* Permite a rolagem vertical */
+    padding: 10px;
 }
 
-.container{
+.container {
     display: grid;
-    grid-template-columns: 1fr 1400px; /* duas colunas iguais */
-    align-items:flex-start;
-    margin: 0 auto; /* centraliza o container todo */
-}
-.caixas{
-    display: grid;
-    grid-template-columns: repeat(19, 50px);
-    grid-template-rows: repeat(9, 50px);
-    gap: 5px;
-    
+    grid-template-columns: 1fr 1400px;
+    align-items: flex-start;
+    margin: 0 auto;
 }
 
-.caixa1{
-    width: 50px;
-    height: 50px;
-    background-color: #E3B5E5; /* padrão */
-}
-
-
-footer{
-    padding-top: 35px;
+footer {
+    padding-top: 30px;
     padding-left: 100px;
 }
 
-.funciona{
-    font-family: "Baloo Thambi 2 ", cursive;
+.funciona {
     color: #BB64BE;
+    font-weight: bolder;
+    font-size: 20px;
+    padding-bottom: 10px;
 }
+
+.voltar a {
+    text-decoration: none;
+    color: #BB64BE;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+/* O quadrado do popup */
+.popup {
+    background-color: #FFE0E6;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    max-width: 400px;
+    width: 80%;
+    color: #FF7E96;
+    font-weight: bold;
+}
+
+.popup h1 {
+    color: #FF4567;
+}
+
+/* Botão de fechar dentro do popup */
+.popup button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #FF4567;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+/* salvara tarefa ====================================== */
+
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-rosinha {
+    background: #ffe0e0;
+    padding: 30px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    position: relative;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fechar {
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.popup-body {
+    margin-top: 20px;
+}
+
+.popup-body input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    background: #ffd6d6;
+    border-radius: 5px;
+}
+
+.popup-body button {
+    background-color: #ff4d6d;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.popup-body button:hover {
+    background-color: #ff3355;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Estilo para as tarefas */
+.tarefa {
+    color: #BB64BE;
+    padding: 4px;
+    margin: 3px 0;
+    border-radius: 10px;
+    font-weight: 900;
+    text-align: center;
+    font-size: 20px;
+}
+
+
+/* quadrados */
+
+
+
+.calendario .grade-calendario {
+    display: grid;
+    grid-template-columns: repeat(31, 50px); /* Aqui você pode ajustar o número de quadrados conforme necessário */
+    grid-template-rows: repeat(9, 50px);
+    grid-gap: 5px; /* Espaço entre os quadrados */
+    overflow-y: auto; /* Habilita rolagem vertical, se necessário */
+    margin-right: 18px; /* Espaço à direita */
+    
+}
+
+/* Estilo para os quadrados */
+.calendario .quadrado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E3B5E5;
+    height: 50px; /* Defina uma altura para os quadrados */
+    border: 1px solid #ccc;
+
+    font-size: 12px;
+    color: #333;
+    cursor: pointer;
+    
+}
+
+
+
