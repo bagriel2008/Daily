@@ -51,6 +51,8 @@ body::after {
     padding-top: 15px;
     padding-left: 310px;
     row-gap: 20px;
+    font-family: "Baloo Thambi 2", system-ui
+
     
 }
 
@@ -114,6 +116,8 @@ footer {
     font-weight: bolder;
     font-size: 20px;
     padding-bottom: 10px;
+    font-family: "Baloo Thambi 2", system-ui
+
 }
 
 .voltar a {
@@ -121,6 +125,8 @@ footer {
     color: #BB64BE;
     font-weight: bolder;
     font-size: 20px;
+    font-family: "Baloo Thambi 2", system-ui
+
 }
 
 

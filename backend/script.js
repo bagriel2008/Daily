@@ -151,7 +151,6 @@ function carregarQuadrados(mes) {
         const quadrado = document.createElement('div');
         quadrado.classList.add('quadrado');
         quadrado.dataset.numero = i; // Identifica o quadrado
-        quadrado.textContent = i; // Exibe o número dentro do quadrado
         grade.appendChild(quadrado);
     }
 

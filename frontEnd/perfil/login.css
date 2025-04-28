@@ -1,0 +1,81 @@
+* {
+    margin: 0%;
+    background-color: #F8F8F8;
+}
+ 
+/* css linhas */
+body::before,
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2vw;
+    background-color: #FFC8D2;
+}
+ 
+body::before {
+    left: 0;
+}
+ 
+body::after {
+    right: 0;
+}
+ 
+/* css login */
+h1 {
+    display: flex;
+    justify-content: center;
+    padding-top: 5rem;
+    font-family: "Meow Script", cursive;
+    color: #FF4567;
+}
+ 
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ 
+.login-box {
+    background-color: #FFC8D2;
+    padding: 30px;
+    border-radius: 10px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+ 
+.login-box label {
+    font-weight: bold;
+    color: #FF4567;
+    font-size: 16px;
+    background-color: #FFC8D2;
+}
+ 
+.login-box input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffe3ea;
+}
+ 
+.login-box button {
+    background-color: #FF4567;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+ 
+.login-box .voltar {
+    color: #FF4567;
+    text-align: center;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: #FFC8D2;
+}

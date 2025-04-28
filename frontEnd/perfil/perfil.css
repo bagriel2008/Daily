@@ -1,0 +1,154 @@
+* {
+    margin: 0%;
+}
+
+/* css linhas */
+body::before,
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2vw;
+    background-color: #FDA783;
+}
+
+body::before {
+    left: 0;
+}
+
+body::after {
+    right: 0;
+}
+
+/* Container principal */
+.profile-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Lado esquerdo */
+.profile-left {
+    width: 50%;
+    background: #fff;
+    color: #f28c6c;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.profile-picture {
+    width: 120px;
+    height: 120px;
+    background: #f28c6c;
+    border-radius: 50%;
+    margin: 20px auto;
+}
+
+.profile-left h2 {
+    margin-top: 20px;
+}
+
+.profile-left p {
+    margin: 20px 0;
+}
+
+.back-link {
+    display: block;
+    margin-top: 30px;
+    color: #f28c6c;
+    text-decoration: none;
+}
+
+/* Lado direito */
+.profile-right {
+    width: 50%;
+    background: #ffd8c2;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.profile-right h1 {
+    font-family: 'Cursive', sans-serif;
+    font-size: 48px;
+    color: #f28c6c;
+    margin-bottom: 80px;
+}
+
+.profile-actions button {
+    display: block;
+    width: 160px;
+    margin: 20px auto;
+    padding: 12px;
+    font-size: 18px;
+    background: transparent;
+    border: none;
+    color: #f28c6c;
+    cursor: pointer;
+}
+
+.profile-actions button:hover {
+    text-decoration: underline;
+}
+
+/* Modal visual */
+.modal {
+    background: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: #ffc5c5;
+    width: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+}
+
+.modal-content h2,
+.modal-content p {
+    color: #f28c6c;
+    margin-bottom: 20px;
+}
+
+.modal-content input {
+    display: block;
+    width: 90%;
+    margin: 10px auto;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+}
+
+.save-btn,
+.confirm-delete-btn {
+    background: #ff4d6d;
+    color: white;
+    padding: 10px;
+    width: 80%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.save-btn:hover,
+.confirm-delete-btn:hover {
+    background: #ff3360;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    color: #ff4d6d;
+    cursor: pointer;
+}

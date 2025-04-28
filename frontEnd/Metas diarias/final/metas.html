@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Metas Diárias</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+  <link rel="stylesheet" href="metas.css">
+</head>
+<body>
+
+<div class="container">
+  <div class="sidebar">
+    <h1>Metas diárias</h1>
+    <div id="goalList">
+      <div class="goal-item" onclick="selectGoal(this)">
+        <div class="goal-actions">
+          <span class="material-icons-outlined" onclick="toggleGoal(event, this)">add</span>
+          <span class="material-icons-outlined trash" onclick="deleteGoal(event, this)">delete_outline</span>
+        </div>
+      </div>
+    </div>
+    <button class="add-goal-btn" onclick="openAddGoalPopup()">＋ Nova Meta</button>
+  </div>
+
+  <div class="details">
+    <div class="goal-title">Belive in yourself</div>
+
+    <div class="days">
+      <button onclick="toggleDay(this)">D</button>
+      <button onclick="toggleDay(this)">S</button>
+      <button onclick="toggleDay(this)">T</button>
+      <button onclick="toggleDay(this)">Q</button>
+      <button onclick="toggleDay(this)">Q</button>
+      <button onclick="toggleDay(this)">S</button>
+      <button onclick="toggleDay(this)">S</button>
+    </div>
+
+    <div class="section-title">Turno</div>
+    <div id="turns">
+      <button onclick="selectTurn(this)">Qualquer hora</button>
+      <button onclick="selectTurn(this)">Manhã</button>
+      <button onclick="selectTurn(this)">Tarde</button>
+      <button onclick="selectTurn(this)">Noite</button>
+    </div>
+
+    <div class="section-title">Informações</div>
+    <div class="info">
+      <p id="info1">Às 8h</p>
+      <p id="info2">1 hora reservada</p>
+      <p id="info3">Sem necessidade de materiais</p>
+    </div>
+
+    <div class="actions">
+      <span class="material-icons-outlined edit" onclick="openEditPopup()">edit</span>
+      <span class="material-icons-outlined delete" onclick="clearInfo()">delete_outline</span>
+    </div>
+  </div>
+</div>
+
+<!-- Popup de edição -->
+<div id="editPopup" class="popup">
+  <div class="popup-content">
+    <h2>Editar Informações</h2>
+    <input id="editInfo1" placeholder="Horário...">
+    <input id="editInfo2" placeholder="Duração...">
+    <input id="editInfo3" placeholder="Observações...">
+    <div class="popup-buttons">
+      <button onclick="saveEdit()">Salvar</button>
+      <button onclick="closeEditPopup()">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Popup de adicionar meta -->
+<div id="addGoalPopup" class="popup">
+  <div class="popup-content">
+    <h2>Nova Meta</h2>
+    <input id="newGoalName" placeholder="Nome da meta...">
+    <div class="popup-buttons">
+      <button onclick="addNewGoal()">Adicionar</button>
+      <button onclick="closeAddGoalPopup()">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<script src="metas.js"></script>
+</body>
+</html>
