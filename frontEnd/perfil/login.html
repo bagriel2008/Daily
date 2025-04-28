@@ -1,31 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login</title>
-    <link rel="stylesheet" href="login.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Meow+Script&display=swap');
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>login</title>
+  <link rel="stylesheet" href="login.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Meow+Script&display=swap');
+  </style>
 </head>
+
 <body>
-    <h1>login</h1>
-    <section class="container">
- 
-        <div class="login-box">
-            <label for="usuario">Usuário</label>
-            <input type="text" id="usuario" name="usuario">
-         
-            <label for="senha">Senha</label>
-            <input type="password" id="senha" name="senha">
-         
-            <button type="submit">Entrar</button>
-         
-            <a href="#" class="voltar">&lt; voltar</a>
-          </div>
-    </section>
- 
-     
+  <h1>login</h1>
+  <section class="container">
+
+    <div>
+      <form action="loginForm" class="login-box">
+
+        <label for="post" id="loginForm">Usuário</label>
+        <input type="text" id="name" name="usuario">
+
+        <label for="senha">Senha</label>
+        <input type="password" id="password" name="senha">
+
+        <button type="submit">Entrar</button>
+
+        <a href="#" class="voltar">&lt; voltar</a>
+
+      </form>
+    </div>
+  </section>
+
+  <script src="../perfil/login.js"></script>
 </body>
+
 </html>
