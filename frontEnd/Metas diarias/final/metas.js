@@ -68,7 +68,7 @@ function selectGoal(element) {
       newGoal.innerHTML = `
         <span class="goal-name">${goalName}</span>
         <div class="goal-actions">
-          <span class="material-icons-outlined" onclick="toggleGoal(event, this)">add</span>
+          <span class="material-icons-outlined" onclick="toggleGoal(event, this)">check</span>
           <span class="material-icons-outlined trash" onclick="deleteGoal(event, this)">delete_outline</span>
         </div>
       `;
