@@ -10,16 +10,16 @@ const port = 3030;
 
 // Cadastro de usuário
 app.post('/cadastro', (req, res) => {
-    const { name, nameOfUser, password, email } = req.body;
-    const query = "INSERT INTO users (name, nameOfUser, password, email) VALUES (?, ?, ?, ?)";
+    const { email, senha, nome, usuario } = req.body;
+    const query = "INSERT INTO users (email, password, name, nameOfUser) VALUES (?, ?, ?, ?)";
 
-    connection.query(query, [name, nameOfUser, password, email], (err, results) => {
+    connection.query(query, [email, senha, nome, usuario], (err, results) => {
         if (err) return res.status(500).json({ success: false, message: 'Erro no servidor' });
 
         res.json({
             success: true,
             message: 'Cadastro bem-sucedido',
-            data: { id: results.insertId, name, nameOfUser, password, email }
+            data: { id: results.insertId, email, senha, nome, usuario}
         });
     });
 });
@@ -40,9 +40,33 @@ app.post('/login', (req, res) => {
     });
 });
 
+app.put('/usuarios/:id', (req, res) => {
+    const { name, email } = req.body;
+    const id = req.params.id;
+
+    const query = "UPDATE users SET name = ?, email = ? WHERE id = ?";
+    connection.query(query, [name, email, id], (err) => {
+        if (err) return res.status(500).json({ success: false, message: "Erro ao atualizar." });
+
+        res.json({ success: true, message: "Perfil atualizado com sucesso." });
+    });
+});
+
+app.delete('/usuarios/:id', (req, res) => {
+    const id = req.params.id;
+    const query = "DELETE FROM users WHERE id = ?";
+
+    connection.query(query, [id], (err) => {
+        if (err) return res.status(500).json({ success: false, message: "Erro ao excluir usuário." });
+
+        res.json({ success: true, message: "Usuário excluído com sucesso." });
+    });
+});
+
+
 // Cadastrar tarefa
 app.post('/progress', (req, res) => {
-    const { nameOfProgress, month } = req.body;
+    const { nameOfProgress, month,} = req.body;
     const query = "INSERT INTO progress (nameOfProgress, month) VALUES (?, ?)";
 
     connection.query(query, [nameOfProgress, month], (err, results) => {
@@ -55,6 +79,43 @@ app.post('/progress', (req, res) => {
         });
     });
 });
+
+app.post('/novaMeta', (req, res) => {
+    const { novaMeta } = req.body;
+    const sql = 'INSERT INTO newGoal (novaMeta) VALUES (?)';
+  
+    connection.query(sql, [novaMeta], (err, result) => {
+      if (err) {
+        console.error('Erro ao adicionar meta:', err);
+        return res.status(500).json({ error: 'Erro ao adicionar meta' });
+      }
+      res.json({ id: result.insertId, novaMeta }); //
+    });
+  });
+
+app.get('/metas', (req, res) => {
+    const query = 'SELECT * FROM newGoal';
+    connection.query(query, (err, results) => {
+        if (err) {
+            console.error('Erro ao buscar metas:', err);
+            return res.status(500).json({ error: 'Erro ao buscar metas' });
+        }
+        res.json(results);
+    });
+});
+
+app.delete('/deleteGoal/:id', (req, res) => {
+    const id = req.params.id;
+    const sql = 'DELETE FROM newGoal WHERE id = ?';
+  
+    connection.query(sql, [id], (err, result) => {
+      if (err) {
+        console.error('Erro ao excluir meta:', err);
+        return res.status(500).json({ error: 'Erro ao excluir meta' });
+      }
+      res.json({ success: true });
+    });
+  });
 
 // Buscar tarefas de um mês
 app.get('/progress/:month', (req, res) => {

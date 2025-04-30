@@ -226,9 +226,15 @@ h1 {
   gap: 15px;
 }
 
-.popup-buttons {
-  display: flex;
-  justify-content: space-between;
+.popup-buttons button {
+  margin-top: 20px;
+  padding: 10px 25px;
+  border: none;
+  background-color: #FF4567;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 .popup-content h2 {

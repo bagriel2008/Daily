@@ -3,6 +3,9 @@ const funciona = document.getElementById('funciona');
 const mesesSelect = document.getElementById('meses');
 const containerProgressos = document.querySelector('.Progressos');
 
+
+
+
 let mesAtual = mesesSelect.value;
 
 mesesSelect.addEventListener('change', () => {
@@ -80,18 +83,18 @@ function salvarTarefa(tarefa, mes) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ nameOfProgress: tarefa, month: mes })
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            mostrarTarefaNaTela(tarefa);
-        } else {
-            alert('Erro ao salvar tarefa!');
-        }
-    })
-    .catch(error => {
-        console.error('Erro:', error);
-        alert('Erro ao conectar com o servidor.');
-    });
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                mostrarTarefaNaTela(tarefa);
+            } else {
+                alert('Erro ao salvar tarefa!');
+            }
+        })
+        .catch(error => {
+            console.error('Erro:', error);
+            alert('Erro ao conectar com o servidor.');
+        });
 }
 
 function mostrarTarefaNaTela(tarefa) {
@@ -102,6 +105,7 @@ function mostrarTarefaNaTela(tarefa) {
     containerProgressos.appendChild(tarefaDiv);
 
     adicionarNovoBotaoAdicionar();
+
 }
 
 function adicionarNovoBotaoAdicionar() {
@@ -120,21 +124,21 @@ function adicionarNovoBotaoAdicionar() {
 
 function carregarTarefasDoMes(mes) {
     fetch(`http://localhost:3030/progress/${mes}`)
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            containerProgressos.innerHTML = "";
-            data.data.forEach(tarefa => {
-                if (tarefa.nameOfProgress) {
-                    mostrarTarefaNaTela(tarefa.nameOfProgress);
-                }
-            });
-            adicionarNovoBotaoAdicionar();
-        }
-    })
-    .catch(error => {
-        console.error('Erro:', error);
-    });
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                containerProgressos.innerHTML = "";
+                data.data.forEach(tarefa => {
+                    if (tarefa.nameOfProgress) {
+                        mostrarTarefaNaTela(tarefa.nameOfProgress);
+                    }
+                });
+                adicionarNovoBotaoAdicionar();
+            }
+        })
+        .catch(error => {
+            console.error('Erro:', error);
+        });
 }
 
 // Função que carrega o calendário de quadrados
@@ -142,36 +146,48 @@ function carregarTarefasDoMes(mes) {
 function carregarQuadrados(mes) {
     calendario.innerHTML = ''; // Limpa os quadrados existentes
 
-    const totalQuadrados = 279; // Total de quadrados
     const grade = document.createElement('div');
-    grade.classList.add('grade-calendario'); // Aplique a classe de grid aqui
+    grade.classList.add('grade-calendario');
+    grade.style.display = 'grid';
+    grade.style.gridTemplateRows = 'repeat(9, 1fr)';
+    grade.style.gridTemplateColumns = 'repeat(31, 1fr)';
+    grade.style.gap = '5px';
 
-    // Criação dos quadrados
-    for (let i = 1; i <= totalQuadrados; i++) {
-        const quadrado = document.createElement('div');
-        quadrado.classList.add('quadrado');
-        quadrado.dataset.numero = i; // Identifica o quadrado
-        grade.appendChild(quadrado);
+    // Criação dos quadrados: 9 colunas x 31 linhas = 279 quadrados
+    for (let col = 0; col < 9; col++) {
+        for (let linha = 1; linha <= 31; linha++) {
+            const quadrado = document.createElement('div');
+            quadrado.classList.add('quadrado');
+            quadrado.dataset.numero = linha;
+            quadrado.dataset.id = `linha-${linha}-coluna-${col}`; // Adiciona ID único
+            quadrado.textContent = linha;
+            grade.appendChild(quadrado);
+
+            // Adiciona evento de clique para marcar o quadrado
+            quadrado.addEventListener('click', () => {
+                quadrado.classList.toggle('marcado');
+            });
+        }
     }
 
-    calendario.appendChild(grade); // Adiciona a grade com os quadrados
+    calendario.appendChild(grade);
 
-    // Puxar as cores do banco de dados e pintar os quadrados
+    // Pintar quadrados com cores salvas
     fetch(`http://localhost:3030/progress/${mes}`)
-    .then(response => response.json())
-    .then(data => {
-        data.data.forEach(item => {
-            if (item.day && item.color) {
-                const quadrado = grade.querySelector(`div[data-numero="${item.day}"]`);
-                if (quadrado) {
-                    quadrado.style.backgroundColor = item.color;
+        .then(response => response.json())
+        .then(data => {
+            data.data.forEach(item => {
+                if (item.day && item.color) {
+                    const quadrados = grade.querySelectorAll(`.quadrado[data-numero="${item.day}"]`);
+                    quadrados.forEach(q => {
+                        q.style.backgroundColor = item.color;
+                    });
                 }
-            }
+            });
+        })
+        .catch(error => {
+            console.error('Erro:', error);
         });
-    })
-    .catch(error => {
-        console.error('Erro:', error);
-    });
 }
 
 calendario.addEventListener('click', (e) => {
@@ -196,17 +212,20 @@ calendario.addEventListener('click', (e) => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ month: mesAtual, day: dia, color: novaCor })
         })
-        .then(response => response.json())
-        .then(data => {
-            if (!data.success) {
-                console.error('Erro ao atualizar cor:', data.message);
-            }
-        })
-        .catch(error => {
-            console.error('Erro:', error);
-        });
+            .then(response => response.json())
+            .then(data => {
+                if (!data.success) {
+                    console.error('Erro ao atualizar cor:', data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+            });
     }
 });
+
+
+
 
 // Inicializa
 carregarTarefasDoMes(mesAtual);

@@ -1,5 +1,8 @@
+const cadastro = document.getElementById('cadastrarMorador')
 
-document.getElementById('CadastrarMorador').addEventListener('submit', async (e) => {
+
+
+cadastro.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const email = document.getElementById('email').value;
@@ -15,7 +18,7 @@ document.getElementById('CadastrarMorador').addEventListener('submit', async (e)
         body: JSON.stringify({ email, senha, nome, usuario })
     });
 
-    console.log(response); // ✅ Verificar a resposta do servidor
+    console.log(response);
 
     const results = await response.json();
 

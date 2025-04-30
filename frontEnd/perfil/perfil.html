@@ -1,30 +1,36 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Perfil</title>
   <link rel="stylesheet" href="perfil.css">
 </head>
+
 <body>
- 
-<div class="profile-container">
-  <div class="profile-left">
-    <div class="profile-picture"></div>
-    <h2>Nome de usuário</h2>
-    <p><strong>Nome completo</strong><br>nome sobrenome</p>
-    <p><strong>Email</strong><br>usuario@gmail.com</p>
-    <a href="#" class="back-link">&lt; Voltar</a>
-  </div>
- 
-  <div class="profile-right">
-    <h1>Perfil</h1>
-    <div class="profile-actions">
-      <button class="edit-btn">✏️ Editar</button>
-      <button class="delete-btn">🗑️ Excluir</button>
+
+  <div class="profile-container">
+    <div class="profile-left">
+      <div class="profile-picture"></div>
+      <h2 id="username">Nome de usuário</h2>
+      <p><strong>Nome completo</strong><br><span id="nomeUsuario">nome sobrenome</span></p>
+      <p><strong>Email</strong><br><span id="emailUsuario">usuario@gmail.com</span></p>
+      <a href="../inicio/inicio.html" class="back-link">&lt; Voltar</a>
+    </div>
+
+    <div class="profile-right">
+      <h1>Perfil</h1>
+      <div class="profile-actions">
+        <button id="btnEditarPerfil" class="edit-btn">✏️ Editar</button>
+        <button class="delete-btn">🗑️ Excluir</button>
+      </div>
     </div>
   </div>
-</div>
- 
+
+
+  
+  <script src="/Daily/backend/script.js"></script>
 </body>
+
 </html>
