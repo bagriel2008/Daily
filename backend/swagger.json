@@ -1,0 +1,293 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Daily",
+        "version": "1.0.0",
+        "description": "Documentação da API do sistema Daily"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3030"
+        }
+    ],
+    "paths": {
+        "/cadastro": {
+            "post": {
+                "summary": "Cadastro de usuário",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "senha": {
+                                        "type": "string"
+                                    },
+                                    "nome": {
+                                        "type": "string"
+                                    },
+                                    "usuario": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "email",
+                                    "senha",
+                                    "nome",
+                                    "usuario"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Cadastro bem-sucedido"
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "summary": "Login de usuário",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "nameOfUser": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "nameOfUser",
+                                    "password"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Resultado do login"
+                    }
+                }
+            }
+        },
+        "/usuarios/{id}": {
+            "put": {
+                "summary": "Atualizar perfil de usuário",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "name",
+                                    "email"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Perfil atualizado com sucesso"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Excluir usuário",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuário excluído com sucesso"
+                    }
+                }
+            }
+        },
+        "/progress": {
+            "post": {
+                "summary": "Cadastrar tarefa",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "nameOfProgress": {
+                                        "type": "string"
+                                    },
+                                    "month": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "nameOfProgress",
+                                    "month"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Tarefa cadastrada"
+                    }
+                }
+            }
+        },
+        "/progress/{month}": {
+            "get": {
+                "summary": "Buscar tarefas por mês",
+                "parameters": [
+                    {
+                        "name": "month",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lista de tarefas"
+                    }
+                }
+            }
+        },
+        "/progress/updateColor": {
+            "put": {
+                "summary": "Atualizar cor do dia",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "month": {
+                                        "type": "string"
+                                    },
+                                    "day": {
+                                        "type": "integer"
+                                    },
+                                    "color": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "month",
+                                    "day",
+                                    "color"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Cor atualizada/inserida com sucesso"
+                    }
+                }
+            }
+        },
+        "/novaMeta": {
+            "post": {
+                "summary": "Cadastrar nova meta",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "novaMeta": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "novaMeta"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Meta cadastrada"
+                    }
+                }
+            }
+        },
+        "/metas": {
+            "get": {
+                "summary": "Listar metas",
+                "responses": {
+                    "200": {
+                        "description": "Lista de metas"
+                    }
+                }
+            }
+        },
+        "/deleteGoal/{id}": {
+            "delete": {
+                "summary": "Excluir meta",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Meta excluída"
+                    }
+                }
+            }
+        }
+    }
+}
